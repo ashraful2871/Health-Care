@@ -13,4 +13,22 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-const uploadToCloudinary = async (file: Express.Multer.File) => {};
+const uploadToCloudinary = async (file: Express.Multer.File) => {
+  cloudinary.config({
+    cloud_name: "dohpypgmy",
+    api_key: "158316413285745",
+    api_secret: "fHH2v220NNMSBwzy_NYX-76bODE",
+  });
+
+  // Upload an image
+  const uploadResult = await cloudinary.uploader
+    .upload(file.path, {
+      public_id: file.filename,
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  return uploadResult;
+};
+
+export const fileUploader = { upload, uploadToCloudinary };
