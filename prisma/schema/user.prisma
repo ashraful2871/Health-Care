@@ -3,7 +3,7 @@ model User {
     email              String     @unique
     password           String
     role               UserRole   @default(PATIENT)
-    needPasswordChange Boolean
+    needPasswordChange Boolean    @default(true)
     status             UserStatus @default(ACTIVE)
     createdAt          DateTime   @default(now())
     updatedAt          DateTime   @updatedAt
@@ -53,7 +53,7 @@ model Patient {
     name         String
     email        String   @unique
     profilePhoto String?
-    address      String
+    address      String?
     isDeleted    Boolean  @default(false)
     createdAt    DateTime @default(now())
     updatedAt    DateTime @updatedAt
