@@ -4,6 +4,8 @@ import { fileUploader } from "../../helper/fileUploader";
 import { userValidation } from "./user.validation";
 
 const router = Router();
+
+router.get("/", userController.getAllFromDb);
 router.post(
   "/create-patient",
   fileUploader.upload.single("file"),
