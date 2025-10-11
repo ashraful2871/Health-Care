@@ -15,11 +15,16 @@ const createPatient = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getAllFromDb = catchAsync(async (req: Request, res: Response) => {
-  const { page, limit, searchTerm } = req?.query;
+  const { page, limit, searchTerm, sortBy, sortOrder, role, status } =
+    req?.query;
   const result = await userService.getAllFromDb({
     page: Number(page),
     limit: Number(limit),
     searchTerm,
+    sortBy,
+    sortOrder,
+    role,
+    status,
   });
   console.log(req.body);
   sendResponse(res, {
