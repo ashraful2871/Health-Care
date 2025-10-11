@@ -1,0 +1,265 @@
+<section class="rf-hero">
+  <style>
+    /* ===== Base ===== */
+    .rf-hero {
+      background-color: #6b644b;
+      color: #f4f1e8;
+      font-family: "Georgia", "Times New Roman", serif;
+      padding: 0px;
+      position: relative;
+      overflow: visible;
+    }
+
+    .rf-container {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ===== Left Text Content ===== */
+    .rf-title {
+      font-size: clamp(36px, 5vw, 50px);
+      line-height: 1.1;
+      color: #f7f4ea;
+      margin-bottom: 16px;
+    }
+
+    .rf-desc {
+      font-family: "Inter", sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+      max-width: 550px;
+      margin-bottom: 28px;
+      color: rgba(255, 255, 245, 0.9);
+    }
+
+    .rf-list {
+      list-style: none;
+      margin: 0 0 20px;
+      padding: 0;
+      display: grid;
+      gap: 12px;
+      font-family: "Inter", sans-serif;
+    }
+
+    .rf-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15.5px;
+      color: #f6f2e6;
+    }
+
+    .rf-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      margin-right: 10px;
+      margin-bottom: 5px;
+    }
+
+    .rf-icon img {
+      width: 50px;
+      height: 40px;
+
+      display: block;
+    }
+
+    /* ===== App Store Buttons ===== */
+    .rf-buttons {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .rf-buttons img {
+      height: 44px;
+      width: auto;
+      border-radius: 8px;
+      display: block;
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.25));
+    }
+
+    /* ===== Right Phone Image ===== */
+    .rf-image {
+      position: relative;
+      text-align: right;
+      top: 90px;
+    }
+
+    .rf-image img {
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+      display: block;
+      border-radius: 26px;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 980px) {
+      .rf-hero {
+        border: 2px solid red;
+      }
+      .rf-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .rf-title {
+        font-size: 68px;
+        align-items: baseline;
+      }
+      .rf-desc {
+        width: 100%;
+        align-items: center;
+        margin: 0 auto;
+        margin-top: 20px;
+        margin-bottom: 40px;
+      }
+      .rf-image {
+        text-align: center;
+        margin-top: 40px;
+      }
+
+      .rf-list {
+        justify-items: center;
+      }
+
+      .rf-buttons {
+        justify-content: center;
+      }
+    }
+
+    /* ===== Mobile Position Control (Exactly same as provided image) ===== */
+    @media (max-width: 600px) {
+      .rf-hero {
+        background-color: #6b644b;
+        color: #f4f1e8;
+        font-family: "Georgia", "Times New Roman", serif;
+        padding: 0px;
+        position: relative;
+        overflow: visible;
+        border: 2px solid red;
+      }
+      .rf-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+        padding: 0 20px;
+      }
+
+      .rf-content {
+        z-index: 3;
+        position: relative;
+      }
+
+      .rf-list {
+        justify-items: center;
+      }
+
+      .rf-buttons {
+        justify-content: center;
+        margin-bottom: 25px;
+      }
+
+      /* Phones section styled same as provided image */
+      .rf-image {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 20px; /* space between the two phones */
+        margin-top: 50px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .rf-image img {
+        width: 42%;
+        height: auto;
+        border-radius: 22px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      }
+
+      .rf-hero {
+        padding-bottom: 120px; /* gives breathing room below phones */
+      }
+    }
+  </style>
+
+  <div class="rf-container">
+    <!-- Left side content -->
+    <div class="rf-content">
+      <h2 class="rf-title">Change your walls with a tap</h2>
+      <p class="rf-desc">
+        Control multiple frames, create custom schedules, and update your walls
+        instantly from Apple or Android. Both apps are now live!
+      </p>
+
+      <ul class="rf-list">
+        <li>
+          <span class="rf-icon"
+            ><img
+              src="https://i.ibb.co.com/HD37Lxgr/Frame-96.png"
+              alt="" /></span
+          >Setup &amp; Manage Multiple Frames
+        </li>
+        <li>
+          <span class="rf-icon"
+            ><img
+              src="https://i.ibb.co.com/KPJ7H6c/Frame-96-1.png"
+              alt="" /></span
+          >Add Photos &amp; Manage Albums
+        </li>
+        <li>
+          <span class="rf-icon"
+            ><img
+              src="https://i.ibb.co.com/HTvb0Xpp/Frame-96-2.png"
+              alt="" /></span
+          >Crop &amp; Perfect Photos
+        </li>
+        <li>
+          <span class="rf-icon"
+            ><img
+              src="https://i.ibb.co.com/Pz9tZHHJ/Frame-96-3.png"
+              alt="" /></span
+          >Customize Frame Schedules
+        </li>
+        <li>
+          <span class="rf-icon"
+            ><img
+              src="https://i.ibb.co.com/ym43kWkN/Frame-96-4.png"
+              alt="" /></span
+          >Remote Control Anywhere
+        </li>
+      </ul>
+
+      <div class="rf-buttons">
+        <a href="#"
+          ><img
+            src="https://i.ibb.co.com/ksmVyKvf/Component-2-1.png"
+            alt="Download on App Store"
+        /></a>
+        <a href="#"
+          ><img
+            src="https://i.ibb.co.com/QjzhgxYL/Store-download-button-1.png"
+            alt="Get it on Google Play"
+        /></a>
+      </div>
+    </div>
+
+    <!-- Right single phone image -->
+    <div class="rf-image">
+      <img
+        src="https://i.ibb.co.com/9mYxdS43/i-Phone-15-1.png"
+        alt="Two phones app preview"
+      />
+    </div>
+  </div>
+</section>
