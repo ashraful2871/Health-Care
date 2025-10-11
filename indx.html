@@ -1,7 +1,7 @@
-<section class="rf-hero">
+<section class="cw-hero">
   <style>
     /* ===== Base ===== */
-    .rf-hero {
+    .cw-hero {
       background-color: #6b644b;
       color: #f4f1e8;
       font-family: "Georgia", "Times New Roman", serif;
@@ -10,7 +10,7 @@
       overflow: visible;
     }
 
-    .rf-container {
+    .cw-container {
       max-width: 1180px;
       margin: 0 auto;
       display: grid;
@@ -22,14 +22,14 @@
     }
 
     /* ===== Left Text Content ===== */
-    .rf-title {
+    .cw-title {
       font-size: clamp(36px, 5vw, 50px);
       line-height: 1.1;
       color: #f7f4ea;
       margin-bottom: 16px;
     }
 
-    .rf-desc {
+    .cw-desc {
       font-family: "Inter", sans-serif;
       font-size: 17px;
       line-height: 1.6;
@@ -38,7 +38,7 @@
       color: rgba(255, 255, 245, 0.9);
     }
 
-    .rf-list {
+    .cw-list {
       list-style: none;
       margin: 0 0 20px;
       padding: 0;
@@ -47,7 +47,7 @@
       font-family: "Inter", sans-serif;
     }
 
-    .rf-list li {
+    .cw-list li {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -55,7 +55,7 @@
       color: #f6f2e6;
     }
 
-    .rf-icon {
+    .cw-icon {
       width: 28px;
       height: 28px;
       border-radius: 8px;
@@ -65,21 +65,20 @@
       margin-bottom: 5px;
     }
 
-    .rf-icon img {
+    .cw-icon img {
       width: 50px;
       height: 40px;
-
       display: block;
     }
 
     /* ===== App Store Buttons ===== */
-    .rf-buttons {
+    .cw-buttons {
       display: flex;
       gap: 14px;
       align-items: center;
     }
 
-    .rf-buttons img {
+    .cw-buttons img {
       height: 44px;
       width: auto;
       border-radius: 8px;
@@ -88,13 +87,13 @@
     }
 
     /* ===== Right Phone Image ===== */
-    .rf-image {
+    .cw-image {
       position: relative;
       text-align: right;
       top: 90px;
     }
 
-    .rf-image img {
+    .cw-image img {
       width: 100%;
       max-width: 520px;
       height: auto;
@@ -104,41 +103,41 @@
 
     /* ===== Responsive ===== */
     @media (max-width: 980px) {
-      .rf-hero {
+      .cw-hero {
         border: 2px solid red;
       }
-      .rf-container {
+      .cw-container {
         grid-template-columns: 1fr;
         text-align: center;
       }
-      .rf-title {
+      .cw-title {
         font-size: 68px;
         align-items: baseline;
       }
-      .rf-desc {
+      .cw-desc {
         width: 100%;
         align-items: center;
         margin: 0 auto;
         margin-top: 20px;
         margin-bottom: 40px;
       }
-      .rf-image {
+      .cw-image {
         text-align: center;
         margin-top: 40px;
       }
 
-      .rf-list {
+      .cw-list {
         justify-items: center;
       }
 
-      .rf-buttons {
+      .cw-buttons {
         justify-content: center;
       }
     }
 
-    /* ===== Mobile Position Control (Exactly same as provided image) ===== */
+    /* ===== Mobile Position Control ===== */
     @media (max-width: 600px) {
-      .rf-hero {
+      .cw-hero {
         background-color: #6b644b;
         color: #f4f1e8;
         font-family: "Georgia", "Times New Roman", serif;
@@ -147,7 +146,7 @@
         overflow: visible;
         border: 2px solid red;
       }
-      .rf-container {
+      .cw-container {
         grid-template-columns: 1fr;
         text-align: center;
         position: relative;
@@ -155,84 +154,83 @@
         padding: 0 20px;
       }
 
-      .rf-content {
+      .cw-content {
         z-index: 3;
         position: relative;
       }
 
-      .rf-list {
+      .cw-list {
         justify-items: center;
       }
 
-      .rf-buttons {
+      .cw-buttons {
         justify-content: center;
         margin-bottom: 25px;
       }
 
-      /* Phones section styled same as provided image */
-      .rf-image {
+      .cw-image {
         display: flex;
         justify-content: center;
         align-items: flex-end;
-        gap: 20px; /* space between the two phones */
+        gap: 20px;
         margin-top: 50px;
         position: relative;
         z-index: 1;
       }
 
-      .rf-image img {
+      .cw-image img {
         width: 42%;
         height: auto;
         border-radius: 22px;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
       }
 
-      .rf-hero {
-        padding-bottom: 120px; /* gives breathing room below phones */
+      .cw-hero {
+        padding-bottom: 120px;
       }
     }
   </style>
 
-  <div class="rf-container">
+  <div class="cw-container">
     <!-- Left side content -->
-    <div class="rf-content">
-      <h2 class="rf-title">Change your walls with a tap</h2>
-      <p class="rf-desc">
+    <div class="cw-content">
+      <h2 class="cw-title">Change your walls with a tap</h2>
+      <p class="cw-desc">
         Control multiple frames, create custom schedules, and update your walls
         instantly from Apple or Android. Both apps are now live!
       </p>
 
-      <ul class="rf-list">
+      <ul class="cw-list">
         <li>
-          <span class="rf-icon"
+          <span class="cw-icon"
             ><img
               src="https://i.ibb.co.com/HD37Lxgr/Frame-96.png"
               alt="" /></span
           >Setup &amp; Manage Multiple Frames
         </li>
         <li>
-          <span class="rf-icon"
+          <span class="cw-icon"
             ><img
               src="https://i.ibb.co.com/KPJ7H6c/Frame-96-1.png"
               alt="" /></span
           >Add Photos &amp; Manage Albums
         </li>
         <li>
-          <span class="rf-icon"
+          <span class="cw-icon"
             ><img
               src="https://i.ibb.co.com/HTvb0Xpp/Frame-96-2.png"
               alt="" /></span
           >Crop &amp; Perfect Photos
         </li>
         <li>
-          <span class="rf-icon"
+          <span class="cw-icon"
             ><img
               src="https://i.ibb.co.com/Pz9tZHHJ/Frame-96-3.png"
               alt="" /></span
           >Customize Frame Schedules
         </li>
         <li>
-          <span class="rf-icon"
+          <span class="cw-icon"
             ><img
               src="https://i.ibb.co.com/ym43kWkN/Frame-96-4.png"
               alt="" /></span
@@ -240,7 +238,7 @@
         </li>
       </ul>
 
-      <div class="rf-buttons">
+      <div class="cw-buttons">
         <a href="#"
           ><img
             src="https://i.ibb.co.com/ksmVyKvf/Component-2-1.png"
@@ -255,7 +253,7 @@
     </div>
 
     <!-- Right single phone image -->
-    <div class="rf-image">
+    <div class="cw-image">
       <img
         src="https://i.ibb.co.com/9mYxdS43/i-Phone-15-1.png"
         alt="Two phones app preview"
