@@ -3,9 +3,10 @@ import { prisma } from "../../shared/prisma";
 import { createPatientInput } from "./user.interface";
 import bcrypt from "bcryptjs";
 import { fileUploader } from "../../helper/fileUploader";
-import { Prisma } from "@prisma/client";
+import { Prisma, UserRole } from "@prisma/client";
 import { userSearchAbleFields } from "./user.constain";
 import { paginationHelper } from "../../helper/paginationHelper";
+
 const createPatient = async (req: Request) => {
   if (req.file) {
     const uploadedResult = await fileUploader.uploadToCloudinary(req.file);
@@ -23,6 +24,52 @@ const createPatient = async (req: Request) => {
 
     return await tnx.patient.create({
       data: req.body.patient,
+    });
+  });
+
+  return result;
+};
+const createDoctor = async (req: Request) => {
+  if (req.file) {
+    const uploadedResult = await fileUploader.uploadToCloudinary(req.file);
+    req.body.patient.profilePhoto = uploadedResult?.secure_url;
+  }
+
+  const hashedPassword = await bcrypt.hash(req.body.password, 10);
+  const result = await prisma.$transaction(async (tnx) => {
+    await tnx.user.create({
+      data: {
+        email: req.body.doctor.email,
+        password: hashedPassword,
+        role: UserRole.DOCTOR,
+      },
+    });
+
+    return await tnx.doctor.create({
+      data: req.body.doctor,
+    });
+  });
+
+  return result;
+};
+const createAdmin = async (req: Request) => {
+  if (req.file) {
+    const uploadedResult = await fileUploader.uploadToCloudinary(req.file);
+    req.body.patient.profilePhoto = uploadedResult?.secure_url;
+  }
+
+  const hashedPassword = await bcrypt.hash(req.body.password, 10);
+  const result = await prisma.$transaction(async (tnx) => {
+    await tnx.user.create({
+      data: {
+        email: req.body.admin.email,
+        password: hashedPassword,
+        role: UserRole.ADMIN,
+      },
+    });
+
+    return await tnx.admin.create({
+      data: req.body.admin,
     });
   });
 
@@ -84,4 +131,9 @@ const getAllFromDb = async (params: any, options: any) => {
   };
 };
 
-export const userService = { createPatient, getAllFromDb };
+export const userService = {
+  createPatient,
+  createDoctor,
+  createAdmin,
+  getAllFromDb,
+};
