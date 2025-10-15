@@ -12,7 +12,7 @@ const insertIntoDB = async (payload: any) => {
     const startDateTime = new Date(
       addMinutes(
         addHours(
-          `${format(currentDate, "yyyy-mm-dd")}`,
+          `${format(currentDate, "yyyy-MM-dd")}`,
           Number(startTime.split(":")[0])
         ),
         Number(startTime.split(":")[1])
@@ -21,7 +21,7 @@ const insertIntoDB = async (payload: any) => {
     const endDateTime = new Date(
       addMinutes(
         addHours(
-          `${format(currentDate, "yyyy-mm-dd")}`,
+          `${format(currentDate, "yyyy-MM-dd")}`,
           Number(endTime.split(":")[0])
         ),
         Number(endTime.split(":")[1])
@@ -48,9 +48,14 @@ const insertIntoDB = async (payload: any) => {
 
         schedules.push(result);
       }
+      slotStartDateTime.setMinutes(
+        slotStartDateTime.getMinutes() + intervalTime
+      );
     }
+
+    currentDate.setDate(currentDate.getDate() + 1);
   }
-  return payload;
+  return schedules;
 };
 
 export const scheduleService = {
