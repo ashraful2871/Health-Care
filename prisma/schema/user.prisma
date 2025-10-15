@@ -45,7 +45,8 @@ model Doctor {
     updatedAt           DateTime @updatedAt
     user                User     @relation(fields: [email], references: [email])
 
-    doctorSchedule DoctorSchedules[]
+    doctorSchedule    DoctorSchedules[]
+    doctorSpecialties DoctorSpecialties[]
 
     @@map("doctors")
 }

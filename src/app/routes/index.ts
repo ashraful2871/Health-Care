@@ -2,6 +2,8 @@ import express from "express";
 import { userRoutes } from "../modules/user/user.route";
 import { authRoutes } from "../modules/auth/auth.route";
 import { scheduleRoutes } from "../modules/Schedule/schedule.routes";
+import { doctorScheduleRoutes } from "../modules/DoctorSchedule/doctorSchedule.route";
+import { specialtiesRoutes } from "../modules/specialties/specialties.routes";
 
 const router = express.Router();
 
@@ -17,6 +19,14 @@ const moduleRoutes = [
   {
     path: "/schedule",
     route: scheduleRoutes,
+  },
+  {
+    path: "/doctor-schedule",
+    route: doctorScheduleRoutes,
+  },
+  {
+    path: "/specialties",
+    route: specialtiesRoutes,
   },
 ];
 

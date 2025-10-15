@@ -3,6 +3,7 @@ import catchAsync from "../../shared/catchAsync";
 import sendResponse from "../../shared/sendResponse";
 import { scheduleService } from "./schedule.service";
 import pick from "../../helper/pick";
+import { IJWTPayload } from "../../type/common";
 
 const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
   const result = await scheduleService.insertIntoDB(req.body);
@@ -14,19 +15,27 @@ const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
-const schedulesForDoctor = catchAsync(async (req: Request, res: Response) => {
-  const option = pick(req.query, ["page", "limit", "sortBy", "sortOrder"]);
-  const filters = pick(req.query, ["startDateTime", "endDateTime"]);
-  const result = await scheduleService.schedulesForDoctor(filters, option);
+const schedulesForDoctor = catchAsync(
+  async (req: Request & { user?: IJWTPayload }, res: Response) => {
+    const option = pick(req.query, ["page", "limit", "sortBy", "sortOrder"]);
+    const filters = pick(req.query, ["startDateTime", "endDateTime"]);
 
-  sendResponse(res, {
-    statusCode: 200,
-    success: true,
-    message: "Schedule Retrieved successfully!",
-    meta: result.meta,
-    data: result.data,
-  });
-});
+    const user = req.user;
+    const result = await scheduleService.schedulesForDoctor(
+      user as IJWTPayload,
+      filters,
+      option
+    );
+
+    sendResponse(res, {
+      statusCode: 200,
+      success: true,
+      message: "Schedule Retrieved successfully!",
+      meta: result.meta,
+      data: result.data,
+    });
+  }
+);
 const deleteScheduleFromDb = catchAsync(async (req: Request, res: Response) => {
   const result = await scheduleService.deleteScheduleFromDb(req.params.id);
 
