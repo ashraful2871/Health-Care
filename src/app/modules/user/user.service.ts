@@ -106,6 +106,7 @@ const getAllFromDb = async (params: any, options: any) => {
 
   const whereCOnditions: Prisma.UserWhereInput =
     adnConditions.length > 0 ? { AND: adnConditions } : {};
+
   const result = await prisma.user.findMany({
     skip,
     take: limit,
