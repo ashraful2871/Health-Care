@@ -13,8 +13,9 @@ const getAllFromDb = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
-    message: "Specialty deleted successfully",
-    data: result,
+    message: "Doctor fetched successfully",
+    meta: result.meta,
+    data: result.data,
   });
 });
 export const doctorController = {

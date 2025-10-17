@@ -1,0 +1,1086 @@
+Almost out of storage … If you run out of space, you can't save to Drive or back
+up Google Photos.
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>INEX · Header + Mega Menu + Footer (coerenti)</title>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* Palette coerente */
+        --accent: #124dda; /* blu brand */
+        --accent-2: #102693; /* Resolution Blue (header/footer bar) */
+        --text: #111827;
+        --text-2: #6b7280;
+        --line: #e5e7eb;
+        --bg: #ffffff;
+        --bg-2: #f5f7fa;
+        --radius: 12px;
+        --container: max(280px, min(96vw, 1520px));
+        --nav-h: 76px;
+
+        /* Footer */
+        --footer-bg: var(--accent-2);
+        --ink: #ffffff;
+        --muted: rgba(255, 255, 255, 0.84);
+        --hairline: rgba(255, 255, 255, 0.16);
+        --ring: rgba(255, 255, 255, 0.45);
+        --wrap: 1200px;
+        --heading: #e1eaff;
+        --heading-underline: rgba(255, 255, 255, 0.28);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI,
+          Roboto;
+        color: var(--text);
+        background: var(--bg);
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .container {
+        width: var(--container);
+        margin-inline: auto;
+      }
+
+      /* ===== TOPBAR ===== */
+      .topbar {
+        background: #f0f6ff;
+        border-bottom: 1px solid #d7e2ff;
+      }
+      .topbar .row {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        font-size: 15px;
+        align-items: center;
+        color: #0a1b4d;
+        font-weight: 500;
+      }
+      .topbar strong {
+        color: var(--accent);
+      }
+      .topbar .code {
+        background: var(--accent);
+        color: #fff;
+        font-weight: 700;
+        padding: 2px 10px;
+        border-radius: 999px;
+        margin-left: 6px;
+        box-shadow: 0 2px 6px rgba(18, 77, 218, 0.25);
+      }
+
+      /* ===== HEADER ===== */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 60;
+        background: var(--bg);
+        border-bottom: 1px solid var(--line);
+        transition: box-shadow 0.2s ease;
+      }
+      .nav {
+        height: var(--nav-h);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+      }
+      .logo-mark {
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      }
+
+      /* SEARCH */
+      .search {
+        flex: 1;
+        max-width: 900px;
+        display: flex;
+        align-items: center;
+        border-radius: 999px;
+        padding: 6px;
+        background: var(--bg-2);
+        border: 1px solid #eef0f4;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        transition: box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+      .search:focus-within {
+        box-shadow: 0 0 0 6px rgba(18, 77, 218, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        border-color: #d7e2ff;
+      }
+      .search svg {
+        width: 18px;
+        height: 18px;
+        stroke: #6b7280;
+      }
+      .search .loupe {
+        margin-left: 14px;
+        margin-right: 6px;
+      }
+      .search input {
+        flex: 1;
+        border: 0;
+        background: transparent;
+        padding: 12px 12px;
+        font-size: 16px;
+        outline: none;
+      }
+      .search .go {
+        display: inline-grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 999px;
+        background: var(--accent);
+        border: 0;
+        color: #fff;
+        cursor: pointer;
+        box-shadow: 0 8px 18px rgba(18, 77, 218, 0.28);
+        transition: transform 0.15s ease, box-shadow 0.2s ease;
+      }
+      .search .go:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 22px rgba(18, 77, 218, 0.35);
+      }
+      .search .go svg {
+        stroke: #fff;
+      }
+
+      .actions {
+        display: flex;
+        gap: 12px;
+      }
+      .icon-btn,
+      .ghost {
+        background: none;
+        border: 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+      }
+      .icon-btn svg {
+        width: 22px;
+        height: 22px;
+        stroke: currentColor;
+        fill: none;
+      }
+
+      /* ===== MEGA BAR ===== */
+      .mega-bar {
+        background: var(--accent-2);
+        color: #fff;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 55;
+      }
+      .mega-bar .row {
+        display: flex;
+        align-items: center;
+        height: 50px;
+        justify-content: space-between;
+        gap: 16px;
+        position: relative;
+      }
+      .mega-links {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .mega-bar a {
+        color: #fff;
+        font-weight: 600;
+        padding: 8px 12px;
+        border-radius: 10px;
+        position: relative;
+        white-space: nowrap;
+      }
+      .mega-bar a:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      .mega-btn {
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 999px;
+      }
+
+      /* Social (rotonde come nel footer) */
+      .mega-social {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .mega-social .label {
+        opacity: 0.95;
+        font-weight: 800;
+        margin-right: 6px;
+        letter-spacing: 0.2px;
+        color: #fff;
+      }
+      .social-icon {
+        position: relative;
+        display: inline-grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.22);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        transition: transform 0.15s ease, background 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+      .social-icon:hover {
+        background: #fff;
+        transform: translateY(-1px);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+      }
+      .social-icon svg {
+        width: 20px;
+        height: 20px;
+        stroke: var(--accent-2);
+        fill: none;
+      }
+      .social-icon.facebook svg {
+        fill: var(--accent-2);
+        stroke: none;
+      }
+
+      /* ===== MEGA PANEL ===== */
+      .mega {
+        display: none;
+        background: var(--bg);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+        padding: 32px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .mega.open {
+        display: block;
+        animation: fadeSlide 0.18s ease both;
+      }
+      @keyframes fadeSlide {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .mega .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr) 320px;
+        gap: 32px;
+      }
+      .mega h4 {
+        margin: 0 0 12px;
+        font-size: 14px;
+        text-transform: uppercase;
+        color: var(--text-2);
+        letter-spacing: 0.08em;
+      }
+      .mega a {
+        display: block;
+        padding: 8px 6px;
+        color: var(--text);
+        border-radius: 8px;
+      }
+      .mega a:hover {
+        color: var(--accent);
+        background: var(--bg-2);
+      }
+
+      /* Featured card dentro il mega (Back to School) */
+      .mega-feature {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        overflow: hidden;
+        position: relative;
+        background: linear-gradient(135deg, #f7f9ff, #eef3ff);
+        box-shadow: 0 12px 30px rgba(18, 77, 218, 0.08);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .mega-feature:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 18px 44px rgba(18, 77, 218, 0.14);
+      }
+      .mega-feature .tag {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: var(--accent);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 6px 10px;
+        border-radius: 999px;
+      }
+      .mega-feature .media {
+        height: 160px;
+        background: radial-gradient(
+            90px 60px at 30% 30%,
+            rgba(18, 77, 218, 0.25),
+            transparent
+          ),
+          radial-gradient(
+            120px 80px at 70% 60%,
+            rgba(18, 77, 218, 0.15),
+            transparent
+          );
+      }
+      .mega-feature .content {
+        padding: 16px;
+      }
+      .mega-feature h3 {
+        margin: 0 0 6px;
+        font-size: 18px;
+      }
+      .mega-feature p {
+        margin: 0 0 12px;
+        color: var(--text-2);
+      }
+      .mega-feature .cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--accent);
+        color: #fff;
+        padding: 10px 14px;
+        border-radius: 10px;
+        font-weight: 700;
+      }
+
+      /* ===== FOOTER (portato e uniformato) ===== */
+      footer {
+        background: var(--footer-bg);
+        color: var(--ink);
+      }
+      .ft-wrap {
+        max-width: var(--wrap);
+        margin: 0 auto;
+        padding: 56px 24px 22px;
+        position: relative;
+      }
+      .ft-wrap::before {
+        content: "";
+        position: absolute;
+        inset: 0 24px auto 24px;
+        height: 1px;
+        top: 0;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--hairline),
+          transparent
+        );
+      }
+      .ft-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr 1fr 1.2fr;
+        gap: 36px;
+        align-items: start;
+      }
+      .ft-col h3 {
+        margin: 0 0 12px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--heading);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 10px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
+      }
+      .ft-list {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0 0;
+        display: grid;
+        gap: 10px;
+      }
+      .ft-list a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.6;
+        position: relative;
+      }
+      .ft-list a:hover {
+        color: #fff;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+      .brand {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        align-items: flex-start;
+      }
+      .logo-ft {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        color: #fff;
+        text-decoration: none;
+      }
+      .logo-ft svg {
+        width: 40px;
+        height: 40px;
+      }
+      .logo-ft span {
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        font-size: 20px;
+      }
+      .social {
+        display: flex;
+        gap: 10px;
+      }
+      .social a {
+        width: 36px;
+        height: 36px;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        border: 1px solid var(--hairline);
+        text-decoration: none;
+        transition: transform 0.12s ease, border-color 0.18s ease,
+          background-color 0.18s ease;
+      }
+      .social a:hover {
+        border-color: #fff;
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
+      }
+      .social svg {
+        width: 18px;
+        height: 18px;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+      .ft-divider {
+        height: 1px;
+        background: var(--hairline);
+        margin: 36px 0 16px;
+      }
+      .ft-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding-bottom: 16px;
+      }
+      .copyright {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .payments {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .pay {
+        width: 42px;
+        height: 28px;
+        border-radius: 8px;
+        border: 1px solid var(--hairline);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .pay:hover {
+        border-color: #fff;
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.18) inset;
+      }
+      .pay svg {
+        width: 28px;
+        height: 16px;
+      }
+
+      /* ===== MOBILE ===== */
+      .ft-accordion {
+        display: none;
+      }
+      @media (max-width: 1200px) {
+        .mega .container {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+        .mega-feature {
+          grid-column: 1/-1;
+          display: grid;
+          grid-template-columns: 180px 1fr;
+        }
+        .mega-feature .media {
+          height: auto;
+        }
+      }
+      @media (max-width: 1024px) {
+        .mega .container {
+          grid-template-columns: 1fr;
+        }
+        .mega-social .label {
+          display: none;
+        }
+      }
+      @media (max-width: 900px) {
+        .ft-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 28px;
+        }
+      }
+      @media (max-width: 780px) {
+        .actions {
+          display: none;
+        }
+        .nav {
+          gap: 10px;
+        }
+        .logo-mark {
+          width: 26px;
+          height: 26px;
+        }
+        .search {
+          padding: 4px;
+        }
+        .search input {
+          font-size: 15px;
+        }
+        .mega-bar .row {
+          height: auto;
+          padding: 8px 0;
+        }
+        .mega-links {
+          row-gap: 6px;
+        }
+      }
+      @media (max-width: 640px) {
+        .ft-wrap {
+          padding: 40px 16px 14px;
+        }
+        .ft-grid {
+          display: none;
+        }
+        .ft-accordion {
+          display: block;
+          border: 1px solid var(--hairline);
+          border-radius: 10px;
+          padding: 10px 12px;
+          color: var(--muted);
+          background: rgba(255, 255, 255, 0.02);
+          margin-bottom: 10px;
+        }
+        .ft-accordion summary {
+          list-style: none;
+          cursor: pointer;
+          font-weight: 800;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          font-size: 13px;
+          color: var(--heading);
+        }
+        .ft-accordion .ft-list {
+          margin-top: 10px;
+        }
+      }
+
+      header.scrolled {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+      header.scrolled .nav {
+        height: 68px;
+      }
+      a:focus-visible,
+      button:focus-visible,
+      summary:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 3px var(--ring);
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TOPBAR PROMO -->
+    <div class="topbar">
+      <div class="container row">
+        <div>
+          Risparmia il <strong>10%</strong> iscrivendoti alla newsletter – usa
+          il codice <span class="code">INEX10</span> sul primo ordine
+        </div>
+        <div>
+          <a href="#">Condizioni generali</a> | <a href="#">Assistenza</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- HEADER + SEARCH -->
+    <header>
+      <div class="container nav">
+        <a class="logo" href="#" aria-label="INEX Home">
+          <span class="logo-mark" aria-hidden="true"></span>
+          <span>INEX</span>
+        </a>
+
+        <form class="search" role="search">
+          <svg class="loupe" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" fill="none" stroke-width="2" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2" />
+          </svg>
+          <input
+            type="search"
+            placeholder="Cerca prodotti, brand, categorie…"
+            aria-label="Cerca prodotti"
+          />
+          <button class="go" aria-label="Cerca">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="7" fill="none" stroke-width="2" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2" />
+            </svg>
+          </button>
+        </form>
+
+        <div class="actions">
+          <button class="ghost" aria-label="Accedi">
+            <svg viewBox="0 0 24 24" width="22" height="22">
+              <circle cx="12" cy="7" r="4" />
+              <path d="M20 21a8 8 0 0 0-16 0" />
+            </svg>
+            <span>Accedi</span>
+          </button>
+          <button class="icon-btn" aria-label="Preferiti">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20.8 8.6a5 5 0 0 0-8.2-1.6L12 7l-.6-.6A5 5 0 0 0 3.2 8.6 5.5 5.5 0 0 0 4 16l8 7 8-7a5.5 5.5 0 0 0 .8-7.4z"
+              />
+            </svg>
+          </button>
+          <button
+            class="icon-btn"
+            aria-label="Carrello"
+            style="position: relative"
+          >
+            <svg viewBox="0 0 24 24">
+              <circle cx="9" cy="20" r="1.75" />
+              <circle cx="17" cy="20" r="1.75" />
+              <path
+                d="M3 4h2l2.4 10.5A2 2 0 0 0 9.3 16H18a2 2 0 0 0 2-1.6L21 7H6"
+              />
+            </svg>
+            <span
+              class="badge"
+              style="
+                position: absolute;
+                top: -6px;
+                right: -6px;
+                background: #ef4444;
+                color: #fff;
+                font-size: 11px;
+                font-weight: 800;
+                line-height: 1;
+                padding: 4px 6px;
+                border-radius: 999px;
+                min-width: 18px;
+                text-align: center;
+              "
+              >2</span
+            >
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MEGA BAR -->
+    <nav class="mega-bar">
+      <div class="container row">
+        <div class="mega-links">
+          <a
+            id="tab-categorie"
+            class="mega-btn"
+            href="#"
+            aria-haspopup="true"
+            aria-expanded="false"
+            >Tutte le categorie ▾</a
+          >
+          <a href="#">Back to School</a>
+          <a href="#">Portatili</a>
+          <a href="#">Desktop</a>
+          <a href="#">Workstation</a>
+          <a href="#">Offerte</a>
+          <a href="#">Novità</a>
+          <a href="#">Ultimi pezzi</a>
+        </div>
+        <div class="mega-social" aria-label="Seguici sui social">
+          <span class="label">Seguici</span>
+          <a class="social-icon instagram" href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1.5" />
+            </svg>
+          </a>
+          <a class="social-icon tiktok" href="#" aria-label="TikTok">
+            <svg viewBox="0 0 24 24">
+              <path d="M15 3v5.5a4.5 4.5 0 1 1-3.2-1.2V9" />
+            </svg>
+          </a>
+          <a class="social-icon facebook" href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M13 10h3V7h-3V5.5A2.5 2.5 0 0 1 15.5 3H18v3h-2a1 1 0 0 0-1 1V10h3v3h-3v8h-3v-8h-2v-3h2V7.5A3.5 3.5 0 0 1 15.5 4H18"
+              />
+            </svg>
+          </a>
+          <a class="social-icon youtube" href="#" aria-label="YouTube">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="7" width="18" height="10" rx="3" />
+              <path d="M10 10l5 2-5 2z" />
+            </svg>
+          </a>
+          <a class="social-icon linkedin" href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="3" />
+              <path d="M7.5 10.5v7" />
+              <circle cx="7.5" cy="7.5" r="1" />
+              <path d="M12 17.5v-4a2 2 0 0 1 4 0v4" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MEGA PANEL con Featured card -->
+    <div class="mega" id="mega-menu">
+      <div class="container">
+        <div>
+          <h4>PRODOTTI</h4>
+          <a href="#">Portatili</a>
+          <a href="#">Desktop</a>
+          <a href="#">Monitor</a>
+          <a href="#">Workstation</a>
+          <a href="#">Accessori</a>
+          <a href="#">Back to School</a>
+          <a href="#">Novità</a>
+          <a href="#">Offerte</a>
+          <a href="#">Altre categorie</a>
+        </div>
+        <div>
+          <h4>SERVIZI</h4>
+          <a href="#">Assistenza</a>
+          <a href="#">Garanzia</a>
+          <a href="#">Resi</a>
+          <a href="#">Spedizioni e tracking</a>
+          <a href="#">FAQ</a>
+        </div>
+        <div>
+          <h4>AZIENDA</h4>
+          <a href="#">Chi siamo</a>
+          <a href="#">Contatti generali</a>
+          <a href="#">Blog</a>
+          <a href="#">Servizi per aziende</a>
+          <a href="#">Logistica</a>
+        </div>
+
+        <!-- Card featured come "schedina" dentro il mega -->
+        <aside class="mega-feature">
+          <span class="tag">-15% Oggi</span>
+          <div class="media" aria-hidden="true"></div>
+          <div class="content">
+            <h3>Back to School: Laptop Pro</h3>
+            <p>Prestazioni top, 12 mesi di garanzia, ricondizionato premium.</p>
+            <a class="cta" href="#"
+              >Scopri ora
+              <svg viewBox="0 0 24 24" width="16" height="16">
+                <path
+                  d="M5 12h14M13 5l7 7-7 7"
+                  stroke="#fff"
+                  fill="none"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- CONTENUTO DI RIEMPIMENTO (facoltativo) -->
+    <main class="container" style="padding: 40px 0; color: var(--text-2)">
+      <p>Contenuto di esempio…</p>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo" aria-label="Informazioni di piè di pagina">
+      <div class="ft-wrap">
+        <div class="ft-grid" aria-label="Link utili">
+          <div class="ft-col">
+            <h3>Azienda</h3>
+            <ul class="ft-list">
+              <li><a href="#">Chi siamo</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Assistenza</a></li>
+              <li><a href="#">Domande frequenti (FAQ)</a></li>
+              <li><a href="#">Contattaci</a></li>
+            </ul>
+          </div>
+          <div class="ft-col">
+            <h3>Area cliente</h3>
+            <ul class="ft-list">
+              <li><a href="#">Riepilogo account</a></li>
+              <li><a href="#">Modifica account</a></li>
+              <li><a href="#">I miei ordini</a></li>
+              <li><a href="#">Modifica indirizzi</a></li>
+              <li><a href="#">Password dimenticata</a></li>
+            </ul>
+          </div>
+          <div class="ft-col">
+            <h3>Informazioni utili</h3>
+            <ul class="ft-list">
+              <li><a href="#">Condizioni di vendita</a></li>
+              <li><a href="#">Pagamenti accettati</a></li>
+              <li><a href="#">Spedizioni</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Cookie Policy</a></li>
+            </ul>
+          </div>
+          <div class="ft-col brand">
+            <a href="#" class="logo-ft" aria-label="Homepage">
+              <svg
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <circle cx="24" cy="24" r="24" fill="rgba(255,255,255,.10)" />
+                <path
+                  d="M14 28c6-2 10-8 20-8v8c-6 0-10 4-20 8v-8Z"
+                  fill="#fff"
+                  opacity=".9"
+                />
+              </svg>
+              <span>INEX</span>
+            </a>
+            <div class="social" aria-label="Seguici sui social">
+              <a href="#" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M13.5 9H15V6.5h-1.5c-1.65 0-3 1.35-3 3V11H8v2.5h2v6h3v-6h2l.5-2.5H13V9c0-.28.22-.5.5-.5Z"
+                  />
+                </svg>
+                <span class="sr-only">Facebook</span>
+              </a>
+              <a href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Zm5 4.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5Zm6-.25a1.25 1.25 0 1 0 1.25 1.25A1.25 1.25 0 0 0 18 7.25ZM12 9a3 3 0 1 1-3 3 3 3 0 0 1 3-3Z"
+                  />
+                </svg>
+                <span class="sr-only">Instagram</span>
+              </a>
+              <a href="#" aria-label="YouTube">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.6 4.5 12 4.5 12 4.5s-5.6 0-7.5.6A3 3 0 0 0 2.4 7.2 31.5 31.5 0 0 0 1.8 12a31.5 31.5 0 0 0 .6 4.8 3 3 0 0 0 2.1 2.1c1.9.6 7.5.6 7.5.6s5.6 0 7.5-.6a3 3 0 0 0 2.1-2.1c.4-1.6.6-3.2.6-4.8a31.5 31.5 0 0 0-.6-4.8ZM10 15.5v-7l6 3.5-6 3.5Z"
+                  />
+                </svg>
+                <span class="sr-only">YouTube</span>
+              </a>
+              <a href="#" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M6.5 6.5a2 2 0 1 1 0-4 2 2 0 0 1 0 4ZM4.8 8.5h3.4V20H4.8V8.5Zm5.5 0h3.3v1.6h.1c.5-.9 1.7-1.8 3.4-1.8 3.6 0 4.2 2.4 4.2 5.4V20h-3.5v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V20h-3.5V8.5Z"
+                  />
+                </svg>
+                <span class="sr-only">LinkedIn</span>
+              </a>
+              <a href="#" aria-label="TikTok">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M15.5 4.5c.8 1.1 2.1 2 3.5 2.2v2.4c-1.6-.1-3.1-.7-4.3-1.7v6.4c0 3-2.4 5.2-5.3 5.2A5 5 0 0 1 4.5 14c0-2.8 2.2-5 5-5 .6 0 1.2.1 1.7.3v2.6a2.8 2.8 0 0 0-1.7-.6A2.5 2.5 0 1 0 12 14V4.5h3.5Z"
+                  />
+                </svg>
+                <span class="sr-only">TikTok</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile accordion -->
+        <details class="ft-accordion" open>
+          <summary>Azienda</summary>
+          <ul class="ft-list" style="margin-top: 10px">
+            <li><a href="#">Chi siamo</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Assistenza</a></li>
+            <li><a href="#">Domande frequenti (FAQ)</a></li>
+            <li><a href="#">Contattaci</a></li>
+          </ul>
+        </details>
+        <details class="ft-accordion">
+          <summary>Area cliente</summary>
+          <ul class="ft-list" style="margin-top: 10px">
+            <li><a href="#">Riepilogo account</a></li>
+            <li><a href="#">Modifica account</a></li>
+            <li><a href="#">I miei ordini</a></li>
+            <li><a href="#">Modifica indirizzi</a></li>
+            <li><a href="#">Password dimenticata</a></li>
+          </ul>
+        </details>
+        <details class="ft-accordion">
+          <summary>Informazioni utili</summary>
+          <ul class="ft-list" style="margin-top: 10px">
+            <li><a href="#">Condizioni di vendita</a></li>
+            <li><a href="#">Pagamenti accettati</a></li>
+            <li><a href="#">Spedizioni</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+        </details>
+
+        <div class="ft-divider" role="presentation"></div>
+        <div class="ft-bottom">
+          <div class="copyright">
+            © <span id="year">2025</span> – INEX • Click Renew Choose Tech
+          </div>
+          <div class="payments" aria-label="Circuiti di pagamento accettati">
+            <span class="pay" title="Visa" aria-label="Visa">
+              <svg viewBox="0 0 48 16" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill="#fff"
+                  d="M6 13h3l2.2-10H8.2L6 13Zm8.7 0h2.9l1.8-10h-2.9l-1.8 10ZM28 3c-1.6 0-3 .8-3 2 0 2.9 4.1 2.4 4.1 3.6 0 .4-.5.7-1.2.7-1 0-1.9-.4-2.5-.8l-.5 2.3c.7.3 1.8.6 3 .6 1.8 0 3.1-.8 3.1-2 0-2.8-4.1-2.4-4.1-3.6 0-.3.4-.6 1-.6.9 0 1.6.3 2.1.6l.5-2.2C30 3.2 29 3 28 3Zm9 .2-1.8 9.8h2.8l1.8-9.8H37Z"
+                />
+              </svg>
+            </span>
+            <span class="pay" title="Mastercard" aria-label="Mastercard">
+              <svg viewBox="0 0 48 16" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="8" r="6" fill="#fff" />
+                <circle cx="28" cy="8" r="6" fill="#fff" opacity=".6" />
+              </svg>
+            </span>
+            <span class="pay" title="PayPal" aria-label="PayPal">
+              <svg viewBox="0 0 48 16" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill="#fff"
+                  d="M10 4h8c2 0 3 .8 3 2.4 0 1.9-1.7 3.1-3.6 3.1h-3l-.6 2.5H10L12 4Z"
+                />
+              </svg>
+            </span>
+            <span
+              class="pay"
+              title="American Express"
+              aria-label="American Express"
+            >
+              <svg viewBox="0 0 48 16" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="4" width="28" height="8" rx="2" fill="#fff" />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Anno corrente
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Shadow/compact header on scroll
+      const headerEl = document.querySelector("header");
+      const onScroll = () => {
+        if (window.scrollY > 6) {
+          headerEl.classList.add("scrolled");
+        } else {
+          headerEl.classList.remove("scrolled");
+        }
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      // Mega menu interactions (hover + click + tolleranza)
+      const tabCategorie = document.getElementById("tab-categorie");
+      const mega = document.getElementById("mega-menu");
+      const megaBar = document.querySelector(".mega-bar");
+
+      let hoverTimer;
+      const openMega = () => {
+        mega.classList.add("open");
+        tabCategorie?.setAttribute("aria-expanded", "true");
+      };
+      const closeMega = () => {
+        mega.classList.remove("open");
+        tabCategorie?.setAttribute("aria-expanded", "false");
+      };
+      const scheduleClose = () => {
+        clearTimeout(hoverTimer);
+        hoverTimer = setTimeout(closeMega, 120);
+      };
+      const cancelClose = () => {
+        clearTimeout(hoverTimer);
+      };
+
+      if (tabCategorie && mega) {
+        tabCategorie.addEventListener("click", (e) => {
+          e.preventDefault();
+          mega.classList.contains("open") ? closeMega() : openMega();
+        });
+        [tabCategorie, megaBar].forEach((el) => {
+          el.addEventListener("mouseenter", () => {
+            cancelClose();
+            openMega();
+          });
+          el.addEventListener("mouseleave", scheduleClose);
+        });
+        mega.addEventListener("mouseenter", cancelClose);
+        mega.addEventListener("mouseleave", scheduleClose);
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeMega();
+        });
+      }
+    </script>
+  </body>
+</html>
