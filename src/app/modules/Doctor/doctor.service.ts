@@ -3,6 +3,8 @@ import { paginationHelper } from "../../helper/paginationHelper";
 import { doctorSearchableFields } from "./doctor.constaint";
 import { prisma } from "../../shared/prisma";
 import { IUpdateDoctorSpecialties } from "./doctor.interface";
+import { openai } from "../../helper/open-router";
+import { extractJsonFromMessage } from "../../helper/extractJsonFromMessage";
 
 const getAllFromDB = async (filters: any, options: any) => {
   const { page, limit, skip, sortBy, sortOrder } =
@@ -130,7 +132,55 @@ const updateDoctorInfoDb = async (
   });
 };
 
+const getAiSuggestions = async (payload: { symptoms: string }) => {
+  const doctors = await prisma.doctor.findMany({
+    where: {
+      isDeleted: false,
+    },
+    include: {
+      doctorSpecialties: {
+        include: {
+          specialities: true,
+        },
+      },
+    },
+  });
+  console.log("doctors data loaded.......\n");
+  const prompt = `
+You are a medical assistant AI. Based on the patient's symptoms, suggest the top 3 most suitable doctors.
+Each doctor has specialties and years of experience.
+Only suggest doctors who are relevant to the given symptoms.
+
+Symptoms: ${payload.symptoms}
+
+Here is the doctor list (in JSON):
+${JSON.stringify(doctors, null, 2)}
+
+Return your response in JSON format with full individual doctor data. 
+`;
+  console.log("analyzing......\n");
+  const completion = await openai.chat.completions.create({
+    model: "tngtech/deepseek-r1t2-chimera:free",
+    messages: [
+      {
+        role: "user",
+        content:
+          "You are a helpful AI medical assistant that provides doctor suggestions.",
+      },
+      {
+        role: "user",
+        content: prompt,
+      },
+    ],
+  });
+
+  const result = await extractJsonFromMessage(completion.choices[0].message);
+  // console.log(completion.choices[0].message);
+  return result;
+};
+
 export const doctorService = {
   getAllFromDB,
   updateDoctorInfoDb,
+  getAiSuggestions,
 };
