@@ -8,4 +8,5 @@ export default {
   port: process.env.PORT,
   database_url: process.env.DATABASE_URL,
   openAIApiKey: process.env.OPEN_AI_API_KEY,
+  stripeSecretKey: process.env.STRIPE_SECRET_KEY,
 };
