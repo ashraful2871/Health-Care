@@ -8,7 +8,7 @@ const handleStripeWebhookPayment = catchAsync(
   async (req: Request, res: Response) => {
     const sig = req.headers["stripe-signature"] as string;
     const webhookSecret =
-      "whsec_7aa0e876564d7172ed1ebbda82f18cd6c740ac93ff44efecbf654c0d71bf3f1c";
+      "whsec_6f5d1b83bccace488539d35ead90c0af7f8966d0f4a5bf5d06a322e8724faf21";
 
     let event;
     try {
@@ -22,12 +22,11 @@ const handleStripeWebhookPayment = catchAsync(
     sendResponse(res, {
       statusCode: 200,
       success: true,
-      message: "Webhook request successfully!",
+      message: "Webhook req send successfully",
       data: result,
     });
   }
 );
-
 export const paymentController = {
   handleStripeWebhookPayment,
 };

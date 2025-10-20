@@ -2,8 +2,9 @@ import { Request, Response } from "express";
 import catchAsync from "../../shared/catchAsync";
 import status from "http-status";
 import sendResponse from "../../shared/sendResponse";
-import { appointmentService } from "./appointment.service";
+
 import { IJWTPayload } from "../../type/common";
+import { appointmentService } from "./appointment.service";
 
 const createAppointment = catchAsync(
   async (req: Request & { user?: IJWTPayload }, res: Response) => {

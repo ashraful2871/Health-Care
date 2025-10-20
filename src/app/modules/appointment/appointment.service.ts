@@ -29,7 +29,7 @@ const createAppointment = async (
 
   const videoCallingId = uuidv4();
 
-  return await prisma.$transaction(async (tnx) => {
+  const result = await prisma.$transaction(async (tnx) => {
     const appointmentData = await tnx.appointment.create({
       data: {
         patientId: patientData.id,
@@ -46,7 +46,6 @@ const createAppointment = async (
           scheduleId: payload.scheduleId,
         },
       },
-
       data: {
         isBooked: true,
       },
@@ -54,7 +53,7 @@ const createAppointment = async (
 
     const transactionId = uuidv4();
 
-    await tnx.payment.create({
+    const paymentData = await tnx.payment.create({
       data: {
         appointmentId: appointmentData.id,
         amount: doctorData.appointmentFee,
@@ -65,24 +64,31 @@ const createAppointment = async (
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
+      customer_email: user.email,
       line_items: [
         {
           price_data: {
-            currency: "usd",
+            currency: "bdt",
             product_data: {
-              name: `Appointment With ${doctorData.name}`,
+              name: `Appointment with ${doctorData.name}`,
             },
             unit_amount: doctorData.appointmentFee * 100,
           },
           quantity: 1,
         },
       ],
-      success_url: `https://web.programming-hero.com`,
-      cancel_url: `https://www.facebook.com`,
+      metadata: {
+        appointmentId: appointmentData.id,
+        paymentId: paymentData.id,
+      },
+      success_url: `https://www.programming-hero.com/`,
+      cancel_url: `https://next.programming-hero.com/`,
     });
-    console.log(session);
-    return appointmentData;
+
+    return { paymentUrl: session.url };
   });
+
+  return result;
 };
 
 export const appointmentService = {
