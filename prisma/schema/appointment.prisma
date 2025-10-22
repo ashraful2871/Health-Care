@@ -26,7 +26,7 @@ model Payment {
     transactionId      String        @unique
     status             PaymentStatus @default(UNPAID)
     paymentGatewayData Json?
-    createAt           DateTime      @default(now())
+    createdAt          DateTime      @default(now())
     updateAt           DateTime      @updatedAt
 
     @@map("payments")
@@ -42,7 +42,7 @@ model Prescription {
     patient       Patient     @relation(fields: [patientId], references: [id])
     instructions  String
     followUpDate  DateTime?
-    createAt      DateTime    @default(now())
+    createdAt     DateTime    @default(now())
     updateAt      DateTime    @updatedAt
 
     @@map("prescriptions")

@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import catchAsync from "../../shared/catchAsync";
 import sendResponse from "../../shared/sendResponse";
 import { authService } from "./auth.service";
+import { StatusCodes } from "http-status-codes";
 
 const login = catchAsync(async (req: Request, res: Response) => {
   const result = await authService.login(req.body);
@@ -27,7 +28,19 @@ const login = catchAsync(async (req: Request, res: Response) => {
     data: { needPasswordChange },
   });
 });
+const getMe = catchAsync(async (req: Request, res: Response) => {
+  const userSession = req.cookies;
+  const result = await authService.getMe(userSession);
+
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "User Retrieve Successfully",
+    data: result,
+  });
+});
 
 export const authController = {
   login,
+  getMe,
 };

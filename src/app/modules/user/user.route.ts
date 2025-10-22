@@ -8,6 +8,19 @@ import { UserRole } from "@prisma/client";
 const router = Router();
 
 router.get("/", auth(UserRole.ADMIN), userController.getAllFromDb);
+
+router.get(
+  "/me",
+  auth(UserRole.PATIENT, UserRole.DOCTOR, UserRole.ADMIN),
+  userController.getMyProfile
+);
+
+router.post(
+  "/:id/status",
+  auth(UserRole.ADMIN),
+  userController.changedProfileStatus
+);
+
 router.post(
   "/create-patient",
   fileUploader.upload.single("file"),
